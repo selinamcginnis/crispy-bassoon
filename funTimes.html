@@ -1,0 +1,85 @@
+<div id="app">
+
+  <div class="container">
+    
+    <div class="row mb-5">
+    
+      <div class="col-sm-12">
+          
+          <h1>WP REST API: Can this be done by the amazing SM?</h1>
+        
+        <p>We just won't know until 11:30 today</p> <p>Using the <a href="https://developer.wordpress.org/rest-api/">WP REST API</a> and <a href="https://vuejs.org/">Vue.JS</a>.</p>       
+      </div>
+      
+    </div>
+  
+    <div class="row">
+      
+      <div class="col-md-4 mb-5 push-md-8">
+      
+        <div class="sticky-top card">
+          
+          <div class="card-block">
+
+            <h6>Websites:</h6>
+
+            <div class="form-check" v-for="source in sources">
+
+              <label>
+
+                <input type="checkbox" name="{{source.name}}" v-model="source.on"/>
+
+                {{source.name}}
+
+              </label>  
+
+            </div>
+            
+          </div>
+            
+        </div>
+      
+      </div>
+    
+      <div class="col-md-8 p-0 pull-md-4">
+  
+        <div class="container" v-for="source in sources">
+
+          <div class="row">
+
+            <div class="container" v-show="source.on" >
+
+              <div class="row mb-5" v-for="post in source.posts">
+
+                <div class="col-md-12">
+
+                  <h4 v-html='post.title.rendered'></h4>
+
+                  <h5 class="text-muted">Resource type is an {{post.type}} last modified on {{post.modified | prettyDate}}</h5>
+                  <p><a href="post.link" target="_blank">View resource ></a></p> 
+                  <img src="post.wp:featuredmedia"></img>
+                </div>
+
+                <div class="col-md-12">
+
+                  <div v-html='post.excerpt.rendered'></div>
+
+                
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      
+    </div>
+    
+  </div>
+
+</div>
